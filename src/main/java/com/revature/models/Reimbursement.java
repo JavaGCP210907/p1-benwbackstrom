@@ -1,5 +1,7 @@
 package com.revature.models;
 
+import java.sql.Blob;
+
 public class Reimbursement {
 
 	private int reimb_id;
@@ -7,7 +9,7 @@ public class Reimbursement {
 	private String reimb_submitted;
 	private String reimb_resolved;
 	private String reimb_description;
-	private String reimb_receipt;
+	private Blob reimb_receipt;
 	private User reimb_author;
 	private User reimb_resolver;
 	private ReimbursementStatus reimb_status_fk;
@@ -22,7 +24,7 @@ public class Reimbursement {
 
 
 	public Reimbursement(int reimb_id, int reimb_amount, String reimb_submitted, String reimb_resolved,
-			String reimb_description, String reimb_receipt, User reimb_author, User reimb_resolver,
+			String reimb_description, Blob reimb_receipt, User reimb_author, User reimb_resolver,
 			ReimbursementStatus reimb_status_fk, ReimbursementType reimb_type_fk) {
 		super();
 		this.reimb_id = reimb_id;
@@ -39,7 +41,7 @@ public class Reimbursement {
 
 
 	public Reimbursement(int reimb_amount, String reimb_submitted, String reimb_resolved, String reimb_description,
-			String reimb_receipt, User reimb_author, User reimb_resolver, ReimbursementStatus reimb_status_fk,
+			Blob reimb_receipt, User reimb_author, User reimb_resolver, ReimbursementStatus reimb_status_fk,
 			ReimbursementType reimb_type_fk) {
 		super();
 		this.reimb_amount = reimb_amount;
@@ -188,12 +190,12 @@ public class Reimbursement {
 	}
 
 
-	public String getReimb_receipt() {
+	public Blob getReimb_receipt() {
 		return reimb_receipt;
 	}
 
 
-	public void setReimb_receipt(String reimb_receipt) {
+	public void setReimb_receipt(Blob reimb_receipt) {
 		this.reimb_receipt = reimb_receipt;
 	}
 

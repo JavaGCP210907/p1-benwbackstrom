@@ -18,5 +18,9 @@ public interface ReimbursementInterface {
 	public boolean addReimbursement(Reimbursement reimb);
 	//Employees must be able to add a Reimbursement request
 	
+	public boolean approveReimbursement(int rId, int mId);
+	
+	public boolean rejectReimbursement(int rId, int mId);
+	//Managers must be able to approve/deny reimbursement requests
 	
 }

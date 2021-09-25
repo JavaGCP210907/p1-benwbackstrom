@@ -66,4 +66,22 @@ VALUES ('Pending'),
 	   ('Approved'),
 	   ('Denied');
 	  
+--SELECT statements to help me 
+	  
+SELECT * FROM userroles;
+
+SELECT * FROM reimbursementsstatuses;
+
+SELECT * FROM reimbursementtypes;
+
+SELECT * FROM reimbursements;
+
+--Testing to see what I can do
+INSERT INTO reimbursements (reimb_amount, reimb_submitted, reimb_description, reimb_status_fk, reimb_type_fk)
+VALUES (100, '2021-09-25 4:54:35', 'Test', 1, 2);
+
+UPDATE reimbursements SET (reimb_resolved, reimb_status_fk) = ('2021-10-25 4:23:35', 2) WHERE reimb_id = 3;
+
+TRUNCATE TABLE reimbursements;
+
 
