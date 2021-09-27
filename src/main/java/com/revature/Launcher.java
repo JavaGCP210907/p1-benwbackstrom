@@ -28,8 +28,19 @@ public class Launcher {
 				}
 				).start(8090);
 		
+		//REFACTOR THIS TO MAKE MORE SENSE AS SOME ARE FOR FINANCIAL MANAGERS AND SOME ARE FOR NORMAL EMPLOYEES
+		
 		//GET all reimbursements
 		app.get("/tickets", rc.getAllReimbursementsHandler);
+		
+		//GET employee's reimbursements
+		app.get("/tickets/:id", rc.getReimbursementsByEmployeeIdHandler);
+		
+		//GET reimbursements filtered by status
+		app.get("/tickets/filter/:status", rc.getReimbursementsByStatusHandler);
+		
+		//POST request sent to /tickets => create a new ticket
+		app.post("/tickets", rc.addReimbursementHandler);
 
 	}
 

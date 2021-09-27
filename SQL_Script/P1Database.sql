@@ -111,4 +111,10 @@ VALUES (150, '2021-09-27 15:07:23', 'Hotel for Client Meeting', 3, 1, 1),
 	  
 DROP TABLE reimbursements;
 
+--Again testing
+select * from reimbursements inner join reimbursementsstatuses on reimb_status_fk = reimb_status_id where reimb_status = 'Pending';
+
+
+
+
 

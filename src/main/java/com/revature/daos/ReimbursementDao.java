@@ -139,7 +139,7 @@ public class ReimbursementDao implements ReimbursementInterface {
 		
 		try(Connection conn = ConnectionUtil.getConnection()){
 			
-			String sql = "select * reimbursements inner join reimbursementsstatuses "
+			String sql = "select * from reimbursements inner join reimbursementsstatuses "
 						+ "on reimb_status_fk = reimb_status_id where reimb_status = ?";
 			
 			PreparedStatement ps = conn.prepareStatement(sql);
