@@ -42,7 +42,7 @@ public class ReimbursementDao implements ReimbursementInterface {
 						rs.getString("reimb_submitted"),
 						rs.getString("reimb_resolved"),
 						rs.getString("reimb_description"),
-						rs.getBlob("reimb_receipt"),
+						//rs.getBlob("reimb_receipt"),
 						null,
 						null,
 						null,
@@ -100,7 +100,7 @@ public class ReimbursementDao implements ReimbursementInterface {
 						rs.getString("reimb_submitted"),
 						rs.getString("reimb_resolved"),
 						rs.getString("reimb_description"),
-						rs.getBlob("reimb_receipt"),
+						//rs.getBlob("reimb_receipt"),
 						null,
 						null,
 						null,
@@ -159,7 +159,7 @@ public class ReimbursementDao implements ReimbursementInterface {
 						rs.getString("reimb_submitted"),
 						rs.getString("reimb_resolved"),
 						rs.getString("reimb_description"),
-						rs.getBlob("reimb_receipt"),
+						//rs.getBlob("reimb_receipt"),
 						null,
 						null,
 						null,
@@ -202,7 +202,7 @@ public class ReimbursementDao implements ReimbursementInterface {
 			Date date = new Date();
 			String currentTimeStamp = dateFormat.format(date);
 			
-			String sql = "insert into reimbursements (reimb_amount, reimb_submitted, reimb_description, reimb_receipt, reimb_author, reimb_status_fk, reimb_type_fk)"
+			String sql = "insert into reimbursements (reimb_amount, reimb_submitted, reimb_description, reimb_author, reimb_status_fk, reimb_type_fk)"
 						+ " values (?, ?, ?, ?, ?, ?, ?)";
 			
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -210,7 +210,7 @@ public class ReimbursementDao implements ReimbursementInterface {
 			ps.setInt(1, reimb.getReimb_amount());
 			ps.setTimestamp(2, java.sql.Timestamp.valueOf(currentTimeStamp));
 			ps.setString(3, reimb.getReimb_description());
-			ps.setBlob(4, reimb.getReimb_receipt());
+			//ps.setBlob(4, reimb.getReimb_receipt());
 			ps.setInt(5, reimb.getReimb_author().getUser_id());
 			ps.setInt(6, reimb.getReimb_status_fk().getReimb_status_id());
 			ps.setInt(7, reimb.getReimb_type_fk().getReimb_type_id());
