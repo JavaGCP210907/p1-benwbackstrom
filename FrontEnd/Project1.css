@@ -32,3 +32,22 @@ td{
     text-decoration: underline;
     margin-bottom: 0;
 }
+
+#login-error{
+    color: red;
+    font-style: oblique;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding-left: 2em;
+}
+
+#newemp{
+    padding-left: 2em;
+    padding-top: 0.5em;
+}
+
+#formcontainer{
+    padding-top: 1em;
+    padding-left: 2em;
+    padding-bottom: 3em;
+    border-style: solid;
+}
