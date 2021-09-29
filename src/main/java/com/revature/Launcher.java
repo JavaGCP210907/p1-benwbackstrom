@@ -3,6 +3,7 @@ package com.revature;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import com.revature.controllers.LoginController;
 import com.revature.controllers.ReimbursementController;
 import com.revature.utils.ConnectionUtil;
 
@@ -13,6 +14,7 @@ public class Launcher {
 	public static void main(String[] args) {
 		
 		ReimbursementController rc = new ReimbursementController();
+		LoginController lc = new LoginController();
 		
 		//testing whether our connection works...
 		try(Connection conn = ConnectionUtil.getConnection()){
@@ -42,10 +44,16 @@ public class Launcher {
 		//POST request sent to /tickets => create a new ticket
 		app.post("/tickets", rc.addReimbursementHandler);
 		
+		//PATCH requests to approve/deny the tickets
 		app.patch("/manager/:mid/approve/:rid", rc.approveReimbursementHandler);
 		
 		app.patch("manager/:mid/reject/:rid", rc.rejectReimbursementHandler);
-
+		
+		//Send a POST request to validate user login credentials
+		app.post("/manlogin", lc.managerLoginHandler);
+		
+		app.post("/emplogin", lc.employeeLoginHandler);
+		
 	}
 
 }

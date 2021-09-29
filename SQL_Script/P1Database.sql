@@ -114,7 +114,7 @@ DROP TABLE reimbursements;
 --Again testing
 select * from reimbursements inner join reimbursementsstatuses on reimb_status_fk = reimb_status_id where reimb_status = 'Pending';
 
-
+SELECT * FROM users WHERE (username, "password", user_role_fk) = ('joestat', 'password1', 1);
 
 
 
