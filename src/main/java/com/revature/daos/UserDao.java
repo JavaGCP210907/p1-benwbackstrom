@@ -84,5 +84,35 @@ public class UserDao implements UserInterface {
 		
 		return null;
 	}
+	
+	public boolean addUser(User user) {
+		
+		try(Connection conn = ConnectionUtil.getConnection()){
+			
+			String sql = "insert into users (username, password, user_first_name, user_last_name, user_email, user_role_fk)"
+						+ " values (?, ?, ?, ?, ?, ?)";
+			
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, user.getUsername());
+			ps.setString(2, user.getPassword());
+			ps.setString(3, user.getFirst_name());
+			ps.setString(4, user.getLast_name());
+			ps.setString(5, user.getEmail());
+			ps.setInt(6, user.getUser_role_fk().getUser_role_id());
+			
+			ps.executeUpdate();
+			
+			System.out.println("Account added sucessfully");
+			
+			return true;
+			
+		} catch(SQLException e) {
+			System.out.println("User could not be created");
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
 
 }

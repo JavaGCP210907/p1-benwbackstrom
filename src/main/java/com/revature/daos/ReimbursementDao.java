@@ -212,7 +212,7 @@ public class ReimbursementDao implements ReimbursementInterface {
 			ps.setString(3, reimb.getReimb_description());
 			//ps.setBlob(4, reimb.getReimb_receipt());
 			ps.setInt(4, reimb.getReimb_author().getUser_id());
-			ps.setInt(5, reimb.getReimb_status_fk().getReimb_status_id());
+			ps.setInt(5, 1); //Requests should start off as Pending
 			ps.setInt(6, reimb.getReimb_type_fk().getReimb_type_id());
 			
 			ps.executeUpdate();
