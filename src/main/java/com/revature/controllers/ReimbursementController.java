@@ -2,6 +2,9 @@ package com.revature.controllers;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.google.gson.Gson;
 import com.revature.models.Reimbursement;
 import com.revature.services.ReimbursementService;
@@ -11,6 +14,7 @@ import io.javalin.http.Handler;
 public class ReimbursementController {
 
 	ReimbursementService rs = new ReimbursementService();
+	Logger log = LogManager.getLogger(ReimbursementController.class);
 	
 	public Handler getAllReimbursementsHandler = (ctx) -> {
 		
@@ -24,6 +28,8 @@ public class ReimbursementController {
 		ctx.result(JSONReimbursements);
 		
 		ctx.status(200);
+		
+		log.info("USER RETRIEVED LIST OF ALL REIMBURSEMENT TICKETS");
 		
 	};
 	
@@ -43,6 +49,7 @@ public class ReimbursementController {
 		
 		ctx.status(200);
 		
+		log.info("USER RETRIEVED LIST OF TICKETS SUBMITTED BY USER #" + id);
 	};
 
 	public Handler getReimbursementsByStatusHandler = (ctx) -> {
@@ -73,6 +80,9 @@ public class ReimbursementController {
 		
 		if(s) {
 			ctx.status(201); //created
+			
+			log.info("EMPLOYEE SUBMITTED A REIMBURSEMENT TICKET");
+			
 		} else {
 			ctx.status(400); //bad request
 		}
@@ -90,6 +100,8 @@ public class ReimbursementController {
 		
 		if(a) {
 			ctx.status(202); //accepted
+			
+			log.warn("MANAGER (USER #" + mId +" ) APPROVED REIMBURSEMENT TICKET #" + rId);
 		} else {
 			ctx.status(400);
 		}
@@ -107,6 +119,8 @@ public class ReimbursementController {
 		
 		if(r) {
 			ctx.status(202);
+			
+			log.warn("MANAGER (USER #" + mId +" ) DENIED REIMBURSEMENT TICKET #" + rId);
 		} else {
 			ctx.status(400);
 		}

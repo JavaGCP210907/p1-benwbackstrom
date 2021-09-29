@@ -1,5 +1,8 @@
 package com.revature.controllers;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.google.gson.Gson;
 import com.revature.models.LoginDTO;
 import com.revature.services.LoginService;
@@ -10,6 +13,7 @@ import io.javalin.http.Handler;
 public class LoginController {
 
 	LoginService ls = new LoginService();
+	Logger log = LogManager.getLogger(LoginController.class);
 	
 	public Handler managerLoginHandler = (ctx) -> {
 		
@@ -32,9 +36,14 @@ public class LoginController {
 			ctx.status(200); //successfu status code
 			
 			ctx.result("Login Success! JWT is: " + jwt);
+			
+			log.info("ATTEMPED MANAGER LOGIN GRANTED"); //logging successful login attempt
+			
 		} else {
 			ctx.status(401); //unauthorized
 			ctx.result("Login Failed!");
+			
+			log.info("ATTEMPTED MANAGER LOGIN FAILED"); //logging failed login attempt
 		}
 		
 		
@@ -61,9 +70,14 @@ public class LoginController {
 			ctx.status(200); //successfu status code
 			
 			ctx.result("Login Success! JWT is: " + jwt);
+			
+			log.info("ATTEMPTED EMPLOYEE LOGIN GRANTED");
+			
 		} else {
 			ctx.status(401); //unauthorized
 			ctx.result("Login Failed!");
+			
+			log.info("ATTEMPTED EMPLOYEE LOGIN FAILED");
 		}
 		
 		
