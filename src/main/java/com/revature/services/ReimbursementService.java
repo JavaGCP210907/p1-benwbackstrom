@@ -25,5 +25,13 @@ public class ReimbursementService {
 	public boolean addReimbursement(Reimbursement reimb) {
 		return rDao.addReimbursement(reimb);
 	}
+
+	public boolean approveReimbursement(int rId, int mId) {
+		return rDao.approveReimbursement(rId, mId);
+	}
+
+	public boolean rejectReimbursement(int rId, int mId) {
+		return rDao.rejectReimbursement(rId, mId);
+	}
 	
 }

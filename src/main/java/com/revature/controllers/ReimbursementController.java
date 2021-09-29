@@ -63,7 +63,7 @@ public class ReimbursementController {
 
 	public Handler addReimbursementHandler = (ctx) -> {
 		
-		String body = ctx.body(); //body contains JSON with the dino information
+		String body = ctx.body(); //body contains JSON with the Reimbursement information
 		
 		Gson gson = new Gson();
 		
@@ -77,5 +77,38 @@ public class ReimbursementController {
 			ctx.status(400); //bad request
 		}
 		
+	};
+
+	public Handler approveReimbursementHandler = (ctx) -> {
+		
+		int mId = Integer.parseInt(ctx.pathParam("mid"));
+		int rId = Integer.parseInt(ctx.pathParam("rid"));
+		
+		Gson gson = new Gson();
+		
+		boolean a = rs.approveReimbursement(rId, mId);
+		
+		if(a) {
+			ctx.status(202); //accepted
+		} else {
+			ctx.status(400);
+		}
+		
+	};
+
+	public Handler rejectReimbursementHandler = (ctx) -> {
+		
+		int mId = Integer.parseInt(ctx.pathParam("mid"));
+		int rId = Integer.parseInt(ctx.pathParam("rid"));
+		
+		Gson gson = new Gson();
+		
+		boolean r = rs.rejectReimbursement(rId, mId);
+		
+		if(r) {
+			ctx.status(202);
+		} else {
+			ctx.status(400);
+		}
 	};
 }

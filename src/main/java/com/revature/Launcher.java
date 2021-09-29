@@ -41,6 +41,10 @@ public class Launcher {
 		
 		//POST request sent to /tickets => create a new ticket
 		app.post("/tickets", rc.addReimbursementHandler);
+		
+		app.patch("/manager/:mid/approve/:rid", rc.approveReimbursementHandler);
+		
+		app.patch("manager/:mid/reject/:rid", rc.rejectReimbursementHandler);
 
 	}
 

@@ -203,7 +203,7 @@ public class ReimbursementDao implements ReimbursementInterface {
 			String currentTimeStamp = dateFormat.format(date);
 			
 			String sql = "insert into reimbursements (reimb_amount, reimb_submitted, reimb_description, reimb_author, reimb_status_fk, reimb_type_fk)"
-						+ " values (?, ?, ?, ?, ?, ?, ?)";
+						+ " values (?, ?, ?, ?, ?, ?)";
 			
 			PreparedStatement ps = conn.prepareStatement(sql);
 			
@@ -211,9 +211,9 @@ public class ReimbursementDao implements ReimbursementInterface {
 			ps.setTimestamp(2, java.sql.Timestamp.valueOf(currentTimeStamp));
 			ps.setString(3, reimb.getReimb_description());
 			//ps.setBlob(4, reimb.getReimb_receipt());
-			ps.setInt(5, reimb.getReimb_author().getUser_id());
-			ps.setInt(6, reimb.getReimb_status_fk().getReimb_status_id());
-			ps.setInt(7, reimb.getReimb_type_fk().getReimb_type_id());
+			ps.setInt(4, reimb.getReimb_author().getUser_id());
+			ps.setInt(5, reimb.getReimb_status_fk().getReimb_status_id());
+			ps.setInt(6, reimb.getReimb_type_fk().getReimb_type_id());
 			
 			ps.executeUpdate();
 			
