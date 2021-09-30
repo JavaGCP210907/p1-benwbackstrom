@@ -13,44 +13,49 @@
     <body class="text-center">
         <h5 class="welcome">Complete this form to Create an Account!</h5>
         <div>
-        <div id="formcontainer">
-            <form id="accountForm" class="col-sm-12">
-                <label for="firstname">First Name:</label>
-                <input type="text" id="firstname" name="firstname" placeholder="Ex: John" class="col-sm-2">
+            <div id="formcontainer">
+                <form id="accountForm" class="col-sm-12">
+                    <label for="firstname">First Name:</label>
+                    <input type="text" id="firstname" name="firstname" placeholder="Ex: John" class="col-sm-2">
 
-                <label for="firstname">Last Name:</label>
-                <input type="text" id="lastname" name="lastname" placeholder="Ex: Smith" class="col-sm-2">
+                    <label for="firstname">Last Name:</label>
+                    <input type="text" id="lastname" name="lastname" placeholder="Ex: Smith" class="col-sm-2">
 
-                <br>
-                <br>
+                    <br>
+                    <br>
 
-                <label for="useremail">Enter your email:</label>
-                <input type="text" id="useremail" name="useremail" placeholder="Ex: johnsmith@gmail.com" class="col-sm-4">
+                    <label for="useremail">Enter your email:</label>
+                    <input type="text" id="useremail" name="useremail" placeholder="Ex: johnsmith@gmail.com" class="col-sm-4">
 
-                <br>
-                <br>
+                    <br>
+                    <br>
 
-                <label for="username">Enter a Username</label>
-                <input type="text" id="username" name="username" class="col-sm-2">
+                    <label for="username">Enter a Username</label>
+                    <input type="text" id="username" name="username" class="col-sm-2">
 
-                <label for="password">Enter a Password</label>
-                <input type="password" id="userp" name="userp" class="col-sm-2">
+                    <label for="password">Enter a Password</label>
+                    <input type="password" id="userp" name="userp" class="col-sm-2">
 
-                <br>
-                <br>
-                <p>Please Select an Option:</p>
-                <input type="radio" id="choiceemp" name="radio" checked>
-                <label for="choiceemp" class="col-sm-2">I am a General Employee</label>
-                
-                <input type="radio" id="choiceman" name="radio">
-                <label for="choiceman" class="col-sm-2">I am a Financial Manager</label>
+                    <br>
+                    <br>
+                    <p>Please Select an Option:</p>
+                    <input type="radio" id="choiceemp" name="radio" checked>
+                    <label for="choiceemp" class="col-sm-2">I am a General Employee</label>
+                    
+                    <input type="radio" id="choiceman" name="radio">
+                    <label for="choiceman" class="col-sm-2">I am a Financial Manager</label>
 
-                <br>
-                <br>
-                <button id="submitForm" class="btn btn-dark col-lg-4">Submit</button>
+                    <br>
+                    <br>
+                    <button id="submitForm" class="btn btn-dark col-lg-4">Submit</button>
 
-            </form>
+                </form>
+            </div>
         </div>
+        <div id="form-response">
+            <!-- Nothing goes here, will be added by JS -->
         </div>
+
+        <script src="EmployeeReimbursement.js"></script>
     </body>
 </html>
