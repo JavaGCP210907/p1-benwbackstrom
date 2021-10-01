@@ -52,3 +52,12 @@ td{
     border-style: solid;
     margin: 0 10em;
 }
+
+#spaced{
+    padding-top: 4em;
+}
+
+#reimbs-filter{
+    margin-left: 10px;
+    margin-right: 10px;
+}
