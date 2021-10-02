@@ -55,9 +55,21 @@ td{
 
 #spaced{
     padding-top: 4em;
+    padding-bottom: 2em;
 }
 
 #reimbs-filter{
     margin-left: 10px;
     margin-right: 10px;
+}
+
+#spaced-bordered{
+    padding-top: 1em;
+    padding-bottom: 3em;
+    padding-left: 2em;
+    border-style: solid;
+}
+
+.selectpicker > option{
+    background-color: black;
 }

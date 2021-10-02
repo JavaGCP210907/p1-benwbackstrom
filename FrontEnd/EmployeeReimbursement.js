@@ -35,6 +35,7 @@ async function empLoginFunc(){
 
     //control flow based on login success/fail
     if(response.status === 200){
+        localStorage.setItem("secretUserCredentials", user); //place user credentials into local storage for later
         window.location.href = "EmployeeMenu.html"
     } else{
         document.getElementById("login-error").innerText = "Login Failed! Please try again."
@@ -70,6 +71,7 @@ async function manLoginFunc(){
 
     //control flow based on login success/fail
     if(response.status === 200){
+        localStorage.setItem("secretUserCredentials", user);
         window.location.href = "ManagerMenu.html"
     } else{
         document.getElementById("login-error").innerText = "Login Failed! Please try again."

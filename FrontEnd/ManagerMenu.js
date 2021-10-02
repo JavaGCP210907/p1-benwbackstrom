@@ -74,7 +74,8 @@ async function manReimbsFunc() {
                     let abutt = document.createElement("button");
                     abutt.setAttribute("class", "btn btn-success");
                     abutt.setAttribute("id", "abutt-" + reimb.reimb_id)
-                    //abutt.addEventListener("click", approveFunc);
+                    abutt.setAttribute("onclick", "approveFunc(this.id)");
+                    //This makes the button's click event do what we need it to
                     abutt.innerHTML = "Approve";
                     cell10.appendChild(abutt); //append the button to the row
                 }
@@ -85,7 +86,7 @@ async function manReimbsFunc() {
                     let dbutt = document.createElement("button");
                     dbutt.setAttribute("class", "btn btn-danger");
                     dbutt.innerHTML = "Deny";
-                    //dbutt.addEventListener("click", denyFunc);
+                    dbutt.setAttribute("onclick", "denyFunc(this.id)");
                     dbutt.setAttribute("id", "dbutt-" + reimb.reimb_id);
                     cell11.appendChild(dbutt); //append the button to the row
                 }
@@ -164,7 +165,7 @@ async function manReimbsFunc() {
                     let abutt = document.createElement("button");
                     abutt.setAttribute("class", "btn btn-success");
                     abutt.setAttribute("id", "abutt-" + reimb.reimb_id)
-                    //abutt.addEventListener("click", approveFunc);
+                    abutt.setAttribute("onclick", "approveFunc(this.id)");
                     abutt.innerHTML = "Approve";
                     cell10.appendChild(abutt); //append the button to the row
                 }
@@ -175,7 +176,7 @@ async function manReimbsFunc() {
                     let dbutt = document.createElement("button");
                     dbutt.setAttribute("class", "btn btn-danger");
                     dbutt.innerHTML = "Deny";
-                    //dbutt.addEventListener("click", denyFunc);
+                    dbutt.setAttribute("onclick", "denyFunc(this.id)");
                     dbutt.setAttribute("id", "dbutt-" + reimb.reimb_id);
                     cell11.appendChild(dbutt); //append the button to the row
                 }
@@ -190,4 +191,15 @@ async function manReimbsFunc() {
         }
     }
 
+}
+
+//PATCH Request Functionality ---------------------------------------------------------------------
+async function approveFunc(id){
+    let rId = id.replace('abutt-',''); //gives us the reimb_id we need for the request
+
+}
+
+async function denyFunc(id){
+    let rId = id.replace('dbutt-','');
+    
 }
