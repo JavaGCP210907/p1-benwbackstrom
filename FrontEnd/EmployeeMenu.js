@@ -81,6 +81,40 @@ async function addReimbFunc(){
         password: localStorage.getItem("userp")
     };
 
-    
+    //get inputs from form fields
+    let ramount = Number(document.getElementById("amount").value);
+    let rdesc = document.getElementById("description").value;
+    let rtype = Number(document.getElementById("type-filter").value);
+
+    let reimb = {
+        reimb_amount: ramount,
+        reimb_description: rdesc,
+        reimb_author: author,
+        reimb_type_fk: {
+            reimb_type_id: rtype
+        }
+    };
+
+    console.log(reimb); //debug statement
+
+    let response = await fetch(url + "tickets", {
+
+        method: "POST",
+        body: JSON.stringify(reimb),
+        credentials: "include"
+
+    })
+
+    if(response.status === 201){
+        let res = document.getElementById("form-response");
+        //Show success message
+        res.setAttribute("style", "color:green;");
+        res.innerHTML = "Ticket Created! Refresh to see changes.";
+    } else{
+        let res = document.getElementById("form-response");
+        //Show fail message
+        res.setAttribute("style", "color:red;");
+        res.innerHTML = "Ticket Creation Failed! Please try again.";
+    }
 
 }
