@@ -4,6 +4,7 @@ document.getElementById("submitForm").addEventListener("click", addUserFunc);
 
 //Function for creating a new user/employee/account --------------------------------
 async function addUserFunc(){
+
     let usern = document.getElementById("username").value;
     let userp = document.getElementById("userp").value;
     let fName = document.getElementById("firstname").value;
@@ -21,7 +22,7 @@ async function addUserFunc(){
     }
 
     //make our new user JavaScript Object
-    user = {
+    let user = {
         username: usern,
         password: userp,
         first_name: fName,
@@ -30,7 +31,7 @@ async function addUserFunc(){
         user_role_fk: {
             user_role_id: userRoleId //wont need to have user_role title because DB will do that for us, just like with the user_id
         }
-    }
+    };
 
     console.log(user);
 
@@ -38,7 +39,7 @@ async function addUserFunc(){
     let response = await fetch(url + "users", {
 
         method: "POST",
-        body: JSON.stringify(user),
+        body: JSON.stringify(user)
 
     });
 
@@ -53,7 +54,7 @@ async function addUserFunc(){
         let tID = setTimeout(function () {
             window.location.href = "EmployeeReimbursement.html";
             window.clearTimeout(tID);
-        }, 5000); //redirects to main page in 5 seconds
+        }, 2000); //redirects to main page in 2 seconds
     } else {
         let res = document.getElementById("form-response");
         //Show fail message

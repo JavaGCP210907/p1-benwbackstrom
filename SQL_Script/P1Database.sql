@@ -116,5 +116,7 @@ select * from reimbursements inner join reimbursementsstatuses on reimb_status_f
 
 SELECT * FROM users WHERE (username, "password", user_role_fk) = ('joestat', 'password1', 1);
 
+DELETE FROM users WHERE user_id = 6;
+
 
 
