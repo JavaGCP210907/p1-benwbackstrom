@@ -7,13 +7,16 @@ import org.apache.logging.log4j.Logger;
 
 import com.google.gson.Gson;
 import com.revature.models.Reimbursement;
+import com.revature.models.User;
 import com.revature.services.ReimbursementService;
+import com.revature.services.UserService;
 
 import io.javalin.http.Handler;
 
 public class ReimbursementController {
 
 	ReimbursementService rs = new ReimbursementService();
+	UserService us = new UserService();
 	Logger log = LogManager.getLogger(ReimbursementController.class);
 	
 	public Handler getAllReimbursementsHandler = (ctx) -> {
@@ -42,13 +45,21 @@ public class ReimbursementController {
 		
 		if(ctx.req.getSession(false) != null) {
 				
-			//take the given path parameter and parse it into an int
-			int id = Integer.parseInt(ctx.pathParam("id"));
+			String body = ctx.body(); //body has user credentials
+			
+			Gson gson = new Gson();
+			
+			User u = gson.fromJson(body, User.class);
+			
+			u = us.getUserByCredentials(u.getUsername(), u.getPassword());
+			//Get full user information from the body
+			
+			int id = u.getUser_id();
+			
+			u = null; //remove user details from server
 			
 			List<Reimbursement> pastReimbursements = rs.getReimbursementsByEmployeeId(id);
 			//Employee's past tickets
-			
-			Gson gson = new Gson();
 			
 			String JSONReimbursements = gson.toJson(pastReimbursements);
 			
@@ -94,6 +105,11 @@ public class ReimbursementController {
 			
 			Reimbursement reimb = gson.fromJson(body, Reimbursement.class);
 			
+			User u = reimb.getReimb_author(); //gets username/password out of the reimb
+			u = us.getUserByCredentials(u.getUsername(), u.getPassword());
+			reimb.setReimb_author(u); //set full user to the Reimbursement's author field
+			u = null;
+			
 			boolean s = rs.addReimbursement(reimb);
 			
 			if(s) {
@@ -115,10 +131,17 @@ public class ReimbursementController {
 		
 		if(ctx.req.getSession(false) != null) {
 			
-			int mId = Integer.parseInt(ctx.pathParam("mid"));
 			int rId = Integer.parseInt(ctx.pathParam("rid"));
+			//get Reimbursement Id from the path parameter
+			
+			String body = ctx.body();
 			
 			Gson gson = new Gson();
+			
+			User u = gson.fromJson(body, User.class);
+			u = us.getUserByCredentials(u.getUsername(), u.getPassword());
+			int mId = u.getUser_id();
+			u = null;
 			
 			boolean a = rs.approveReimbursement(rId, mId);
 			
@@ -140,10 +163,16 @@ public class ReimbursementController {
 		
 		if(ctx.req.getSession(false) != null) {
 		
-			int mId = Integer.parseInt(ctx.pathParam("mid"));
 			int rId = Integer.parseInt(ctx.pathParam("rid"));
 			
+			String body = ctx.body();
+			
 			Gson gson = new Gson();
+			
+			User u = gson.fromJson(body, User.class);
+			u = us.getUserByCredentials(u.getUsername(), u.getPassword());
+			int mId = u.getUser_id();
+			u = null;
 			
 			boolean r = rs.rejectReimbursement(rId, mId);
 			

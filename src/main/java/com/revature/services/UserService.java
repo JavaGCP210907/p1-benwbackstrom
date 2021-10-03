@@ -11,6 +11,9 @@ public class UserService {
 		return uDao.addUser(user);
 	}
 
-	
+	public User getUserByCredentials(String username, String password) {
+		return uDao.getUserByCredentials(username, password);
+		//Need to do this to be able to get user id for our POST/PATCH Methods
+	}
 	
 }

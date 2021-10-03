@@ -32,13 +32,12 @@ public class Launcher {
 				}
 				).start(8090);
 		
-		//REFACTOR THIS TO MAKE MORE SENSE AS SOME ARE FOR FINANCIAL MANAGERS AND SOME ARE FOR NORMAL EMPLOYEES
 		
 		//GET all reimbursements
 		app.get("/tickets", rc.getAllReimbursementsHandler);
 		
 		//GET employee's reimbursements
-		app.get("/tickets/:id", rc.getReimbursementsByEmployeeIdHandler);
+		app.get("/tickets/past", rc.getReimbursementsByEmployeeIdHandler);
 		
 		//GET reimbursements filtered by status
 		app.get("/tickets/filter/:status", rc.getReimbursementsByStatusHandler);
@@ -50,9 +49,9 @@ public class Launcher {
 		app.post("/users", uc.addUserHandler);
 		
 		//PATCH requests to approve/deny the tickets
-		app.patch("/manager/:mid/approve/:rid", rc.approveReimbursementHandler);
+		app.patch("/approve/:rid", rc.approveReimbursementHandler);
 		
-		app.patch("manager/:mid/reject/:rid", rc.rejectReimbursementHandler);
+		app.patch("/reject/:rid", rc.rejectReimbursementHandler);
 		
 		//Send a POST request to validate user login credentials
 		app.post("/manlogin", lc.managerLoginHandler);
