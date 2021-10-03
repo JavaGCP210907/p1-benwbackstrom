@@ -196,10 +196,55 @@ async function manReimbsFunc() {
 //PATCH Request Functionality ---------------------------------------------------------------------
 async function approveFunc(id){
     let rId = id.replace('abutt-',''); //gives us the reimb_id we need for the request
+    let resolver = localStorage.getItem("secretUserCredentials"); //get the username/password from local storage to put in the Request body
+
+    console.log(user); //debugging statement
+
+    //send the PATCH Fetch request to the server
+    let response = await fetch(url + "approve/" + rId, {
+
+        method: "PATCH", //send a PATCH request
+        body: JSON.stringify(resolver),
+        credentials: "include"
+
+    });
+
+    if(response.status === 202){
+        let res = document.getElementById("patch-response");
+        res.setAttribute("style", "color:green;");
+        res.innerHTML = "Ticket approved! Please refresh to see changes.";
+
+    } else{
+        let res = document.getElementById("patch-response");
+        res.setAttribute("style", "color:red;");
+        res.innerHTML = "Ticket could not be approved. Please try again.";
+    }
 
 }
 
 async function denyFunc(id){
     let rId = id.replace('dbutt-','');
-    
+    let resolver = localStorage.getItem("secretUserCredentials");
+
+    console.log(user); //debugging statement
+
+    //send the PATCH Fetch request to the server
+    let response = await fetch(url + "reject/" + rId, {
+
+        method: "PATCH", //send a PATCH request
+        body: JSON.stringify(resolver),
+        credentials: "include"
+
+    });
+
+    if(response.status === 202){
+        let res = document.getElementById("patch-response");
+        res.setAttribute("style", "color:green;");
+        res.innerHTML = "Ticket rejected! Please refresh to see changes.";
+
+    } else{
+        let res = document.getElementById("patch-response");
+        res.setAttribute("style", "color:red;");
+        res.innerHTML = "Ticket could not be rejected. Please try again.";
+    }
 }
