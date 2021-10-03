@@ -45,18 +45,17 @@ public class ReimbursementController {
 		
 		if(ctx.req.getSession(false) != null) {
 				
-			String body = ctx.body(); //body has user credentials
+			//take path paramter
+			String username = ctx.pathParam("username");
 			
-			Gson gson = new Gson();
-			
-			User u = gson.fromJson(body, User.class);
-			
-			u = us.getUserByCredentials(u.getUsername(), u.getPassword());
-			//Get full user information from the body
+			User u = us.getUserByUsername(username);
+			//Get full user information from the parameter
 			
 			int id = u.getUser_id();
 			
 			u = null; //remove user details from server
+			
+			Gson gson = new Gson();
 			
 			List<Reimbursement> pastReimbursements = rs.getReimbursementsByEmployeeId(id);
 			//Employee's past tickets

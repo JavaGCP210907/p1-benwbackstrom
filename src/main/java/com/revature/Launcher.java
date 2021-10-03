@@ -37,7 +37,7 @@ public class Launcher {
 		app.get("/tickets", rc.getAllReimbursementsHandler);
 		
 		//GET employee's reimbursements
-		app.get("/tickets/past", rc.getReimbursementsByEmployeeIdHandler);
+		app.get("/tickets/past/:username", rc.getReimbursementsByEmployeeIdHandler);
 		
 		//GET reimbursements filtered by status
 		app.get("/tickets/filter/:status", rc.getReimbursementsByStatusHandler);

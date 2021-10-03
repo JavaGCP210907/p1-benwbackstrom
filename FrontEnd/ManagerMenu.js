@@ -196,9 +196,13 @@ async function manReimbsFunc() {
 //PATCH Request Functionality ---------------------------------------------------------------------
 async function approveFunc(id){
     let rId = id.replace('abutt-',''); //gives us the reimb_id we need for the request
-    let resolver = localStorage.getItem("secretUserCredentials"); //get the username/password from local storage to put in the Request body
+    
+    let resolver = {
+        username: localStorage.getItem("useru"), //get the username/password from local storage to put in the Request body
+        password: localStorage.getItem("userp")
+    };
 
-    console.log(user); //debugging statement
+    console.log(resolver); //debugging statement
 
     //send the PATCH Fetch request to the server
     let response = await fetch(url + "approve/" + rId, {
@@ -224,9 +228,13 @@ async function approveFunc(id){
 
 async function denyFunc(id){
     let rId = id.replace('dbutt-','');
-    let resolver = localStorage.getItem("secretUserCredentials");
+    
+    let resolver = {
+        username: localStorage.getItem("useru"), //get the username/password from local storage to put in the Request body
+        password: localStorage.getItem("userp")
+    };
 
-    console.log(user); //debugging statement
+    console.log(resolver); //debugging statement
 
     //send the PATCH Fetch request to the server
     let response = await fetch(url + "reject/" + rId, {

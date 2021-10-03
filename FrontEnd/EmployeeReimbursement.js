@@ -35,8 +35,9 @@ async function empLoginFunc(){
 
     //control flow based on login success/fail
     if(response.status === 200){
-        localStorage.setItem("secretUserCredentials", user); //place user credentials into local storage for later
-        window.location.href = "EmployeeMenu.html"
+        window.localStorage.setItem("useru", usern); //place user credentials into local storage for later
+        window.localStorage.setItem("userp", userp);
+        document.location.href = "EmployeeMenu.html"
     } else{
         document.getElementById("login-error").innerText = "Login Failed! Please try again."
     }
@@ -71,7 +72,8 @@ async function manLoginFunc(){
 
     //control flow based on login success/fail
     if(response.status === 200){
-        localStorage.setItem("secretUserCredentials", user);
+        window.localStorage.setItem("useru", usern);
+        window.localStorage.setItem("userp", userp);
         window.location.href = "ManagerMenu.html"
     } else{
         document.getElementById("login-error").innerText = "Login Failed! Please try again."
