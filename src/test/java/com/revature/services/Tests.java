@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 
 import com.revature.models.Reimbursement;
 import com.revature.models.User;
+import com.revature.models.UserRole;
 
 public class Tests {
 
@@ -99,7 +100,23 @@ public class Tests {
 		
 	}
 	
-	//testAddUser here
+	@Test
+	public void testAddUser() {
+		emp.setUsername("testuser");
+		emp.setPassword("testing");
+		emp.setFirst_name("Tess");
+		emp.setLast_name("Tear");
+		emp.setEmail("tester@revature.net");
+		UserRole ur = new UserRole(1, "Employee");
+		emp.setUser_role_fk(ur);
+		
+		result = us.addUser(emp);
+		
+		assertTrue(result);
+		//Test passes if result is true (user can be created)
+	}
+	//Actually creates a user in the DB, so be careful with this test
+	
 	
 	//ReimbursementService Tests----------------------------------------
 	@Test
@@ -125,6 +142,26 @@ public class Tests {
 		
 		//This doesnt really give a null object, but instead an empty list
 		//So, instead, we can see if 0 is an out of bounds index => no entries in the list
+		assertThrows(IndexOutOfBoundsException.class, () -> rList.get(0));
+	}
+	
+	@Test
+	public void testGetReimbursementByStatus() {
+		
+		String str = "Approved";
+		List<Reimbursement> rList = rs.getReimbursementsByStatus(str);
+		//This should give a list of Reimbursements
+		
+		assertNotNull(rList);
+		//Test passes if list comes back
+	}
+	
+	@Test
+	public void testGetReimbursementByInvalidStatus() {
+		
+		String str = "HaHAaHa"; //not a status type
+		List<Reimbursement> rList = rs.getReimbursementsByStatus(str);
+		
 		assertThrows(IndexOutOfBoundsException.class, () -> rList.get(0));
 	}
 	
