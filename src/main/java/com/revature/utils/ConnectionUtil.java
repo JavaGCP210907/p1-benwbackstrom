@@ -19,7 +19,7 @@ public class ConnectionUtil {
 		
 		
 		//Use our database credentials to establish a database connection
-		String url = "jdbc:postgresql://localhost:5432/postgres?currentSchema=employee_reimbursements";
+		String url = "jdbc:postgresql://104.197.183.70:5432/postgres?currentSchema=employee_reimbursements";
 		String username = "postgres";
 		String password = "password";
 		
