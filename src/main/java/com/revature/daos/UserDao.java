@@ -152,5 +152,26 @@ public class UserDao implements UserInterface {
 		return false;
 	}
 
+	@Override
+	public void removeUser(String username) {
+		
+		try(Connection conn = ConnectionUtil.getConnection()){
+			
+			String sql = "delete from users where username = ?";
+			
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, username);
+			
+			ps.executeUpdate();
+			
+			System.out.println("User Deleted Successfully");
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
 
 }

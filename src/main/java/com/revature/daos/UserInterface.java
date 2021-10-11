@@ -12,5 +12,8 @@ public interface UserInterface {
 	
 	public boolean addUser(User user);
 	//I would like to have a method to allow someone to create an account
+	
+	public void removeUser(String username);
+	//^^Just for testing purposes
 
 }

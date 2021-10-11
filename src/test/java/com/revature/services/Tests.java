@@ -40,6 +40,10 @@ public class Tests {
 	
 	@AfterAll
 	public static void clearServices() { //after tests are done, clear the objects
+		//Delete created DB records
+		us.removeUser("testuser");
+		
+		//Clear the services
 		ls = null;
 		rs = null;
 		us = null;

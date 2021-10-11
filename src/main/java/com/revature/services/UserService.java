@@ -20,4 +20,8 @@ public class UserService {
 		return uDao.getUserByUsername(username);
 	}
 	
+	public void removeUser(String username) {
+		uDao.removeUser(username);
+	}
+	
 }
